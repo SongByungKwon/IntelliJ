@@ -7,9 +7,14 @@ import hello.hellospring.repository.MemoryMemberRepository;
 import java.util.List;
 import java.util.Optional;
 
-public class MemberSerivce {
+public class MemberService {
     //회원가입//
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    private final MemberRepository memberRepository;
+
+    public MemberService(MemberRepository memberRepository){
+        this.memberRepository=memberRepository;
+    }
+
     //같은 이름이 있는 증복 회원 체크
     public Long join(Member member){
         validateDuplicateMember(member);//중복 회원 검증
